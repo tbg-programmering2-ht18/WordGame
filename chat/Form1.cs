@@ -170,7 +170,7 @@ namespace chat
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (client.Connected)
+            while (client.Connected)
             {
                 STW.WriteLine(textToSend);
                 this.redtHistory.Invoke(new MethodInvoker(delegate ()
