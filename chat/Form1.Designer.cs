@@ -61,11 +61,9 @@
             this.groupBox1.Controls.Add(this.btnServerStart);
             this.groupBox1.Controls.Add(this.edtServerPort);
             this.groupBox1.Controls.Add(this.edtServerIP);
-            this.groupBox1.Location = new System.Drawing.Point(16, 15);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(988, 90);
+            this.groupBox1.Size = new System.Drawing.Size(741, 73);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Server";
@@ -73,19 +71,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(644, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(483, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "5000->";
             // 
             // btnServerStart
             // 
-            this.btnServerStart.Location = new System.Drawing.Point(785, 25);
-            this.btnServerStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnServerStart.Location = new System.Drawing.Point(589, 20);
             this.btnServerStart.Name = "btnServerStart";
-            this.btnServerStart.Size = new System.Drawing.Size(100, 28);
+            this.btnServerStart.Size = new System.Drawing.Size(75, 23);
             this.btnServerStart.TabIndex = 2;
             this.btnServerStart.Text = "Start";
             this.btnServerStart.UseVisualStyleBackColor = true;
@@ -93,18 +89,16 @@
             // 
             // edtServerPort
             // 
-            this.edtServerPort.Location = new System.Drawing.Point(644, 25);
-            this.edtServerPort.Margin = new System.Windows.Forms.Padding(4);
+            this.edtServerPort.Location = new System.Drawing.Point(483, 20);
             this.edtServerPort.Name = "edtServerPort";
-            this.edtServerPort.Size = new System.Drawing.Size(132, 22);
+            this.edtServerPort.Size = new System.Drawing.Size(100, 20);
             this.edtServerPort.TabIndex = 1;
             // 
             // edtServerIP
             // 
-            this.edtServerIP.Location = new System.Drawing.Point(24, 25);
-            this.edtServerIP.Margin = new System.Windows.Forms.Padding(4);
+            this.edtServerIP.Location = new System.Drawing.Point(18, 20);
             this.edtServerIP.Name = "edtServerIP";
-            this.edtServerIP.Size = new System.Drawing.Size(611, 22);
+            this.edtServerIP.Size = new System.Drawing.Size(459, 20);
             this.edtServerIP.TabIndex = 0;
             // 
             // groupBox2
@@ -112,11 +106,9 @@
             this.groupBox2.Controls.Add(this.btnClientStart);
             this.groupBox2.Controls.Add(this.edtClientIP);
             this.groupBox2.Controls.Add(this.edtClientPort);
-            this.groupBox2.Location = new System.Drawing.Point(16, 165);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 134);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(988, 92);
+            this.groupBox2.Size = new System.Drawing.Size(741, 75);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client";
@@ -124,10 +116,9 @@
             // btnClientStart
             // 
             this.btnClientStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClientStart.Location = new System.Drawing.Point(785, 31);
-            this.btnClientStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClientStart.Location = new System.Drawing.Point(589, 25);
             this.btnClientStart.Name = "btnClientStart";
-            this.btnClientStart.Size = new System.Drawing.Size(100, 28);
+            this.btnClientStart.Size = new System.Drawing.Size(75, 23);
             this.btnClientStart.TabIndex = 3;
             this.btnClientStart.Text = "Connect";
             this.btnClientStart.UseVisualStyleBackColor = true;
@@ -135,43 +126,38 @@
             // 
             // edtClientIP
             // 
-            this.edtClientIP.Location = new System.Drawing.Point(24, 33);
-            this.edtClientIP.Margin = new System.Windows.Forms.Padding(4);
+            this.edtClientIP.Location = new System.Drawing.Point(18, 27);
             this.edtClientIP.Name = "edtClientIP";
-            this.edtClientIP.Size = new System.Drawing.Size(611, 22);
+            this.edtClientIP.Size = new System.Drawing.Size(459, 20);
             this.edtClientIP.TabIndex = 2;
             // 
             // edtClientPort
             // 
-            this.edtClientPort.Location = new System.Drawing.Point(644, 33);
-            this.edtClientPort.Margin = new System.Windows.Forms.Padding(4);
+            this.edtClientPort.Location = new System.Drawing.Point(483, 27);
             this.edtClientPort.Name = "edtClientPort";
-            this.edtClientPort.Size = new System.Drawing.Size(132, 22);
+            this.edtClientPort.Size = new System.Drawing.Size(100, 20);
             this.edtClientPort.TabIndex = 1;
             // 
             // redtHistory
             // 
-            this.redtHistory.Location = new System.Drawing.Point(40, 265);
-            this.redtHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.redtHistory.Location = new System.Drawing.Point(30, 215);
             this.redtHistory.Name = "redtHistory";
-            this.redtHistory.Size = new System.Drawing.Size(752, 117);
+            this.redtHistory.Size = new System.Drawing.Size(565, 96);
             this.redtHistory.TabIndex = 2;
             this.redtHistory.Text = "";
             // 
             // edtToSend
             // 
-            this.edtToSend.Location = new System.Drawing.Point(40, 390);
-            this.edtToSend.Margin = new System.Windows.Forms.Padding(4);
+            this.edtToSend.Location = new System.Drawing.Point(30, 317);
             this.edtToSend.Name = "edtToSend";
-            this.edtToSend.Size = new System.Drawing.Size(611, 22);
+            this.edtToSend.Size = new System.Drawing.Size(459, 20);
             this.edtToSend.TabIndex = 3;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(692, 391);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSend.Location = new System.Drawing.Point(519, 318);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(100, 28);
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 4;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -187,9 +173,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(801, 265);
+            this.button1.Location = new System.Drawing.Point(601, 215);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.Size = new System.Drawing.Size(75, 19);
             this.button1.TabIndex = 5;
             this.button1.Text = "Start Game";
             this.button1.UseVisualStyleBackColor = true;
@@ -199,9 +186,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(40, 126);
+            this.label2.Location = new System.Drawing.Point(30, 102);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 25);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "P1 Score";
             // 
@@ -209,9 +197,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(202, 126);
+            this.label3.Location = new System.Drawing.Point(152, 102);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 25);
+            this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "P2 Score";
             // 
@@ -219,9 +208,10 @@
             // 
             this.lblP2.AutoSize = true;
             this.lblP2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblP2.Location = new System.Drawing.Point(316, 126);
+            this.lblP2.Location = new System.Drawing.Point(237, 102);
+            this.lblP2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblP2.Name = "lblP2";
-            this.lblP2.Size = new System.Drawing.Size(23, 25);
+            this.lblP2.Size = new System.Drawing.Size(18, 20);
             this.lblP2.TabIndex = 8;
             this.lblP2.Text = "0";
             // 
@@ -229,18 +219,20 @@
             // 
             this.lblP1.AutoSize = true;
             this.lblP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblP1.Location = new System.Drawing.Point(151, 126);
+            this.lblP1.Location = new System.Drawing.Point(113, 102);
+            this.lblP1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblP1.Name = "lblP1";
-            this.lblP1.Size = new System.Drawing.Size(23, 25);
+            this.lblP1.Size = new System.Drawing.Size(18, 20);
             this.lblP1.TabIndex = 9;
             this.lblP1.Text = "0";
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(856, 368);
+            this.trackBar1.Location = new System.Drawing.Point(642, 299);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 56);
+            this.trackBar1.Size = new System.Drawing.Size(78, 45);
             this.trackBar1.TabIndex = 10;
             this.trackBar1.Value = 1;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
@@ -249,18 +241,20 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(851, 324);
+            this.label4.Location = new System.Drawing.Point(638, 263);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 25);
+            this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 11;
-            this.label4.Text = "0";
+            this.label4.Text = "1";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.lblP1);
@@ -273,7 +267,6 @@
             this.Controls.Add(this.redtHistory);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);

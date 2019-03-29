@@ -40,6 +40,9 @@ namespace chat
                 if (adress.AddressFamily == AddressFamily.InterNetwork)
                 {
                     edtServerIP.Text = adress.ToString();
+                    edtClientIP.Text = adress.ToString();
+                    edtClientPort.Text = "5003";
+                    edtServerPort.Text = "5003";
                 }
             }
             data.Add("player1", 0);
@@ -48,9 +51,9 @@ namespace chat
             data.Add("winner", 0);
             data.Add("gamestate", 0);
             data.Add("User", 0);
-            
+
         }
-        
+
         private void btnServerStart_Click(object sender, EventArgs e)
         {
             try
@@ -60,7 +63,7 @@ namespace chat
                 listener.Start();
                 this.BackColor = Color.Green;
                 this.Update();
-                redtHistory. ("Server started" + "\n");
+                redtHistory.AppendText("Server started" + "\n");
                 redtHistory.Update();
                 client = listener.AcceptTcpClient(); //Accept a pending connection request 
                 STR = new StreamReader(client.GetStream());
@@ -99,7 +102,7 @@ namespace chat
                     backgroundWorker1.RunWorkerAsync();
                     backgroundWorker2.WorkerSupportsCancellation = true;
                     data["user"] = 2;
-                    trackBar1.Enabled = false;
+
                 }
             }
             catch (Exception ex)
@@ -110,7 +113,7 @@ namespace chat
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (client.Connected)
+            if (client.Connected)
             {
                 try
                 {
@@ -118,21 +121,45 @@ namespace chat
                     if (recieve.StartsWith("start"))
                     {
                         string[] list = recieve.Split();
+                        this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                        {
+                            redtHistory.AppendText("testing...");
+                        }));
                         start(list[1]);
+
                     }
                     else
                     {
-                        this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                        if (recieve.StartsWith("Max"))
                         {
-                            redtHistory.AppendText(names_recieve[data["user"]] + recieve + "\n");
-                        }));
-                        if (data["gamestate"] == 1)
+                            string[] list = recieve.Split();
+                            data["maxscore"] = int.Parse(list[1]);
+                            this.trackBar1.Invoke(new MethodInvoker(delegate ()
+                            {
+                                trackBar1.Value = data["maxscore"];
+                            }));
+                            this.label4.Invoke(new MethodInvoker(delegate ()
+                            {
+                                label4.Text = trackBar1.Value.ToString();
+                            }));
+                        }
+                        else
                         {
+                            if (data["gamestate"] == 1)
+                            {
 
+                            }
+                            else
+                            {
+                                this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    redtHistory.AppendText(names_recieve[data["user"]] + recieve + "\n");
+                                }));
+                            }
                         }
                     }
                     recieve = "";
-           
+
                 }
                 catch (Exception ex)
                 {
@@ -150,14 +177,14 @@ namespace chat
                 {
                     redtHistory.AppendText(names_send[data["user"]] + textToSend + "\n");
                 }));
-                if(data["gamestate"] == 1)
+                /*if(data["gamestate"] == 1)
                 {
                     data["player1"]++;
                     this.lblP1.Invoke(new MethodInvoker(delegate ()
                     {
                         lblP1.Text = data["player1"].ToString();
                     }));
-                }
+                }*/
             }
             else
             {
@@ -193,6 +220,7 @@ namespace chat
         {
             if (data["winner"] == 0)
             {
+                //button1.Enabled = false;
                 redtHistory.AppendText("5 \n");
                 redtHistory.Update();
                 System.Threading.Thread.Sleep(1000);
@@ -211,10 +239,10 @@ namespace chat
                 redtHistory.AppendText("0 \n");
                 redtHistory.Update();
                 System.Threading.Thread.Sleep(1000);
-
+                redtHistory.Update();
                 //redtHistory.Text = word;
                 data["gamestate"] = 1;
-
+                trackBar1.Enabled = false;
             }
             else
             {
@@ -227,6 +255,20 @@ namespace chat
             label4.Text = trackBar1.Value.ToString();
             data["maxscore"] = trackBar1.Value;
             redtHistory.AppendText("maxscore set to: " + data["maxscore"].ToString() + "\n");
+            textToSend = "Max " + data["maxscore"].ToString();
+            backgroundWorker2.RunWorkerAsync();
+            edtToSend.Text = "";
         }
+        private void trackBar1_ValueChangedFromOther(object sender, EventArgs e)
+        {
+            trackBar1.Value = data["maxscore"];
+            label4.Text = trackBar1.Value.ToString();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
