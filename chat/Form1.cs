@@ -21,6 +21,8 @@ namespace chat
         private TcpClient client; //Listens for connections from TCP network clients.
         public StreamReader STR;
         public StreamWriter STW;
+        public string[] word;
+        public int wordInt = 0;
         public string recieve;
         public string textToSend;
         Dictionary<string, int> data = new Dictionary<string, int>();
@@ -147,7 +149,10 @@ namespace chat
                         {
                             if (data["gamestate"] == 1)
                             {
+                                if()
+                                {
 
+                                }
                             }
                             else
                             {
@@ -170,28 +175,33 @@ namespace chat
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (client.Connected)
+            if (client.Connected)
             {
-                STW.WriteLine(textToSend);
-                this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                try
                 {
-                    redtHistory.AppendText(names_send[data["user"]] + textToSend + "\n");
-                }));
-                /*if(data["gamestate"] == 1)
-                {
-                    data["player1"]++;
-                    this.lblP1.Invoke(new MethodInvoker(delegate ()
+                    STW.WriteLine(textToSend);
+                    this.redtHistory.Invoke(new MethodInvoker(delegate ()
                     {
-                        lblP1.Text = data["player1"].ToString();
+                        redtHistory.AppendText(names_send[data["user"]] + textToSend + "\n");
                     }));
-                }*/
-            }
-            else
-            {
-                MessageBox.Show("Sending failed");
+                    if(data["gamestate"] == 1)
+                    {
+                        if (textToSend == word[wordInt])
+                        {
+                            data["player1"]++;
+                            this.lblP1.Invoke(new MethodInvoker(delegate ()
+                            {
+                                lblP1.Text = data["player1"].ToString();
+                            }));
+                        }   
+                    }
+                }
+                catch (Exception ec)
+                {
+                    MessageBox.Show("Sending failed");
+                }
             }
             backgroundWorker2.CancelAsync();
-
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -207,20 +217,20 @@ namespace chat
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            int wordint = rnd.Next(0, 13);
-            string[] word = { "Albertopolis", "bingle", "clepsydra", "defervescence",
+            wordInt = rnd.Next(0, 13);
+            word[] = { "Albertopolis", "bingle", "clepsydra", "defervescence",
                 "divagate", "ergometer", "famulus", "futhark", "glaikit", "higgler", "humdudgeon",
                 "martlet", "nainsook", "orrery"};
             textToSend = "start " + word[wordint];
             backgroundWorker2.RunWorkerAsync();
-            start(word[wordint]);
+            start(word[wordInt]);
         }
 
         private void start(string word)
         {
             if (data["winner"] == 0)
             {
-                //button1.Enabled = false;
+                button1.Enabled = false;
                 redtHistory.AppendText("5 \n");
                 redtHistory.Update();
                 System.Threading.Thread.Sleep(1000);
@@ -240,7 +250,7 @@ namespace chat
                 redtHistory.Update();
                 System.Threading.Thread.Sleep(1000);
                 redtHistory.Update();
-                //redtHistory.Text = word;
+                redtHistory.Text = word;
                 data["gamestate"] = 1;
                 trackBar1.Enabled = false;
             }
