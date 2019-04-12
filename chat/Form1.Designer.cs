@@ -152,6 +152,8 @@
             this.edtToSend.Name = "edtToSend";
             this.edtToSend.Size = new System.Drawing.Size(459, 20);
             this.edtToSend.TabIndex = 3;
+            this.edtToSend.TextChanged += new System.EventHandler(this.edtToSend_TextChanged);
+            this.edtToSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edtToSend_KeyPress);
             // 
             // btnSend
             // 
@@ -174,7 +176,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(601, 215);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 19);
             this.button1.TabIndex = 5;
@@ -229,7 +231,7 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(642, 299);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(78, 45);

@@ -21,7 +21,9 @@ namespace chat
         private TcpClient client; //Listens for connections from TCP network clients.
         public StreamReader STR;
         public StreamWriter STW;
-        public string[] word;
+        public string[] word = { "Albertopolis", "bingle", "clepsydra", "defervescence",
+                "divagate", "ergometer", "famulus", "futhark", "glaikit", "higgler", "humdudgeon",
+                "martlet", "nainsook", "orrery"}; // initierar word
         public int wordInt = 0;
         public string recieve;
         public string textToSend;
@@ -41,18 +43,20 @@ namespace chat
                 //Checks for ipV4
                 if (adress.AddressFamily == AddressFamily.InterNetwork)
                 {
+                    //försätter ip och port
                     edtServerIP.Text = adress.ToString();
                     edtClientIP.Text = adress.ToString();
                     edtClientPort.Text = "5003";
                     edtServerPort.Text = "5003";
                 }
             }
-            data.Add("player1", 0);
-            data.Add("player2", 0);
-            data.Add("maxscore", 0);
-            data.Add("winner", 0);
-            data.Add("gamestate", 0);
-            data.Add("User", 0);
+            //lägger till alla "viktiga" variabler
+            data.Add("player1", 0);//poäng för player1
+            data.Add("player2", 0);//poäng för player2
+            data.Add("maxscore", 0);//är synkad med en label och slider för att ha ett "MaxScore"
+            data.Add("winner", 0);//gjord för att se vilken av de två spelare som vunnit
+            data.Add("gamestate", 0);// gjord för att se om spelet har startat
+            data.Add("User", 0);//gjord för att se om det är host eller client
 
         }
 
@@ -60,6 +64,7 @@ namespace chat
         {
             try
             {
+                //initierar server
                 //Check with ex Wireshark 
                 TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(edtServerPort.Text));
                 listener.Start();
@@ -73,10 +78,11 @@ namespace chat
                 STW.AutoFlush = true;
                 backgroundWorker1.RunWorkerAsync();
                 backgroundWorker2.WorkerSupportsCancellation = true;
-                data["user"] = 1;
+                data["user"] = 1;//ger user hostd
             }
             catch (Exception ex)
             {
+                //felhantering
                 MessageBox.Show(ex.Message.ToString());
             }
         }
@@ -85,6 +91,7 @@ namespace chat
         {
             try
             {
+                //clienten kopplas till hosten
                 client = new TcpClient();
 
                 //Represents a network endpoint as an IP address and a port number.
@@ -103,7 +110,7 @@ namespace chat
                     STW.AutoFlush = true;
                     backgroundWorker1.RunWorkerAsync();
                     backgroundWorker2.WorkerSupportsCancellation = true;
-                    data["user"] = 2;
+                    data["user"] = 2;// ger user client
 
                 }
             }
@@ -115,20 +122,27 @@ namespace chat
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (client.Connected)
+            while (client.Connected)
             {
                 try
                 {
                     recieve = STR.ReadLine();
                     if (recieve.StartsWith("start"))
                     {
-                        string[] list = recieve.Split();
-                        this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                        if(data["gamestate"] == 1)
                         {
-                            redtHistory.AppendText("testing...");
-                        }));
-                        start(list[1]);
+                            //skips the below scipt if gamestate is 1
 
+                        }
+                        else
+                        {
+                            string[] list = recieve.Split();
+                            this.redtHistory.Invoke(new MethodInvoker(delegate ()
+                            {
+                                redtHistory.AppendText("testing...");
+                            }));
+                            start(list[1]);
+                        }
                     }
                     else
                     {
@@ -149,10 +163,19 @@ namespace chat
                         {
                             if (data["gamestate"] == 1)
                             {
-                                if()
+                                if(recieve.StartsWith("player1"))
                                 {
+                                    data["player1"]++;
+                                    this.lblP1.Invoke(new MethodInvoker(delegate ()
+                                    {
+                                        lblP1.Text = data["player1"].ToString();
+                                    }));
+                                    if (data["player1"] <= data["maxscore"])
+                                    {
+                                        data["winner"] = 2;
 
-                                }
+                                    }
+                                }                                
                             }
                             else
                             {
@@ -188,7 +211,10 @@ namespace chat
                     {
                         if (textToSend == word[wordInt])
                         {
-                            data["player1"]++;
+                            if (data["user"] == 1)
+                            {
+                                data["player1"]++;
+                            
                             this.lblP1.Invoke(new MethodInvoker(delegate ()
                             {
                                 lblP1.Text = data["player1"].ToString();
@@ -218,10 +244,7 @@ namespace chat
         {
             Random rnd = new Random();
             wordInt = rnd.Next(0, 13);
-            word[] = { "Albertopolis", "bingle", "clepsydra", "defervescence",
-                "divagate", "ergometer", "famulus", "futhark", "glaikit", "higgler", "humdudgeon",
-                "martlet", "nainsook", "orrery"};
-            textToSend = "start " + word[wordint];
+            textToSend = "start " + word[wordInt];
             backgroundWorker2.RunWorkerAsync();
             start(word[wordInt]);
         }
@@ -280,5 +303,17 @@ namespace chat
 
         }
 
+        private void edtToSend_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edtToSend_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                btnSend_Click(null,null);
+            }
+        }
     }
 }
